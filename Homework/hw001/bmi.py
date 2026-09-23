@@ -2,11 +2,13 @@
 data = []
 
 # haelth.txt 연결
-with open("health.txt", "r", encoding="utf-8") as file:
+import os
+file_path = os.path.join(os.path.dirname(__file__), "health.txt")
+with open(file_path, "r", encoding="utf-8") as file:
 
     # 연결된 내용 한줄씩 자르고 4가지 변수로 분리
     for line in file:
-        PhoneNumber, Name, Height, Weight = line.strip().strip(",")
+        PhoneNumber, Name, Height, Weight = line.strip().split(",")
 
         # 계산을 위해 키와 몸무게 실수로 전환
         Height = float(Height)
@@ -60,7 +62,26 @@ t.write("소견")
 
 # 사람들의 정보 출력(여러명 가능)
 # 필수로 넣기 => for person in data:
+y = 160
+for person in data:     # 리스트 활용
+    t.goto(-450, y)
+    t.write(person[0])
 
+    t.goto(-280, y)
+    t.write(person[1])
 
+    t.goto(-170, y)
+    t.write(person[2])
+
+    t.goto(-70, y)
+    t.write(person[3])
+
+    t.goto(100, y)
+    t.write(f"{person[4]:.2f}")     # bmi 수치 소수점 2자리까지 출력
+
+    t.goto(180, y)
+    t.write(person[5])
+
+    y = y - 40
 
 turtle.done()
