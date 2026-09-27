@@ -82,6 +82,6 @@ for person in data:     # 리스트 활용
     t.goto(180, y)
     t.write(person[5])
 
-    y = y - 40
+    y -= 40
 
 turtle.done()
